@@ -1,9 +1,10 @@
 <div class="bg-white overflow-x-hidden">
   <div class="flex h-screen">
     <div class="flex-1 flex flex-col overflow-y-auto">
-     
-      <app-header></app-header>
+     <!-- (search)="onSearch($event)" -->
+      <app-header (search)="onSearch($event)" ></app-header>
 
+      <ng-container *ngIf="images.length > 0; else noResults">
       <div
   class="p-4 columns-2 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6 gap-4 space-y-4"
 >
@@ -67,8 +68,15 @@
     </div>
   </div>
 </div>
+</ng-container>
 
     </div>
     <app-sidebar></app-sidebar>
   </div>
 </div>
+
+<ng-template #noResults>
+  <div class="text-center py-10 text-gray-500 font-semibold text-lg">
+     No pins found.
+  </div>
+</ng-template>

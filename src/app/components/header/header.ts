@@ -1,12 +1,20 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Auth } from '../../services/auth';
 import { User } from '../../services/user';
 import { ProfileUser, UserStore } from '../../services/user-store';
 import { Subscription } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -37,5 +45,10 @@ export class Header implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+  }
+  @Output() search = new EventEmitter<string>();
+
+  onInputChange(value: string) {
+    this.search.emit(value);
   }
 }

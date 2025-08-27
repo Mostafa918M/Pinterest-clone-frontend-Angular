@@ -15,12 +15,35 @@ import { RouterModule } from '@angular/router';
 export class PinGallery implements OnInit {
   images: Pin[] = [];
 
+  pins = [];
+  searchTerm: string = '';
+
   constructor(private pinService: PinService) {}
 
   ngOnInit() {
-    this.pinService.getPins().subscribe((data: any) => {
+    this.pinService.getPinSearch().subscribe((data: any) => {
       this.images = data.data.pins;
       console.log(this.images);
+    });
+    this.loadPins();
+    // this.fetchPins();
+  }
+
+  onSearch(term: string) {
+    this.searchTerm = term;
+    console.log('this.searchTerm', this.searchTerm); // Logs "Karim"
+    this.loadPins();
+  }
+
+  loadPins() {
+    this.pinService.getPinSearch({ search: this.searchTerm }).subscribe({
+      next: (res) => {
+        console.log('Filtered pins response:', res);
+        this.images = res.pins || res.data?.pins || [];
+      },
+      error: (err) => {
+        console.error('Error loading pins:', err);
+      },
     });
   }
 }

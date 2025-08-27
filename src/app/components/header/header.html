@@ -25,15 +25,15 @@
         >
             {{ userInitial }}
         </div>
-        <input
-          class="flex-1 bg-gray-100 rounded-full py-2 px-4 text-left text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600"
-          placeholder="Search"
-          type="search"
-        />
-        <button
-          aria-label="Search"
-          class="ml-3 text-gray-600 hover:text-gray-900"
-        >
-          <i class="fas fa-search"> </i>
-        </button>
+      <input
+ (input)="onInputChange($event.target.value)"  class="flex-1 bg-gray-100 rounded-full py-2 px-4 text-left text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600"
+  placeholder="Search"
+  type="search"
+/>
+<button
+  aria-label="Search"
+  class="ml-3 text-gray-600 hover:text-gray-900"
+>
+  <i class="fas fa-search"></i>
+</button>
       </div>

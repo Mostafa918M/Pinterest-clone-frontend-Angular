@@ -38,4 +38,15 @@ export class PinService {
 
     return this.http.put<Pin>(`${this.apiUrl}/${id}`, pinData, { headers });
   }
+  getPinSearch(
+    params: { search?: string; page?: number; limit?: number } = {}
+  ) {
+    return this.http.get<any>(this.apiUrl, {
+      params: {
+        search: params.search || '',
+        page: params.page || 1,
+        limit: params.limit || 10,
+      },
+    });
+  }
 }
