@@ -1,0 +1,165 @@
+<div
+  class="bg-white text-black font-sans overflow-y-scroll"
+  style="height: 100vh"
+>
+  <div class="border-b border-gray-300 p-4 flex justify-start">
+    <h1 class="font-bold text-lg">Create Pin</h1>
+  </div>
+
+  <form
+    [formGroup]="pinForm"
+    (ngSubmit)="onSubmit()"
+    class="max-w-7xl mx-auto px-6 py-8 flex flex-col lg:flex-row gap-8"
+  >
+    <div class="flex-1 flex flex-col gap-6">
+      <!-- Title -->
+      <div>
+  <label for="title" class="block text-xs text-gray-500 mb-1">Title</label>
+  <input
+    id="title"
+    type="text"
+    formControlName="title"
+    placeholder="Add a title"
+    class="w-full bg-gray-200 text-gray-700 rounded-xl py-3 px-4 placeholder:text-gray-500 focus:outline-none"
+  />
+  <div *ngIf="f['title'].touched && f['title'].invalid" class="text-red-500 text-xs mt-1">
+  <div *ngIf="f['title'].errors?.['required']">Title is required.</div>
+  <div *ngIf="f['title'].errors?.['minlength']">Title must be at least 3 characters.</div>
+</div>
+
+</div>
+
+      <!-- Description -->
+      <div>
+        <label for="description" class="block text-xs text-gray-700 mb-1"
+          >Description</label
+        >
+        <textarea
+          id="description"
+          rows="4"
+          formControlName="description"
+          placeholder="Add a detailed description"
+          class="w-full bg-gray-200 text-gray-700 rounded-xl py-3 px-4 placeholder:text-gray-500 resize-none focus:outline-none"
+        ></textarea>
+        <div
+  *ngIf="f['description'].touched && f['description'].invalid"
+  class="text-red-500 text-xs mt-1"
+>
+  <div *ngIf="f['description'].errors?.['required']">
+    Description is required.
+  </div>
+  <div *ngIf="f['description'].errors?.['minlength']">
+    Description must be at least 10 characters.
+  </div>
+</div>
+
+      </div>
+
+      <!-- Image Url -->
+      <div>
+        <label for="imageUrl" class="block text-xs text-gray-700 mb-1"
+          >Image Url</label
+        >
+        <input
+          id="imageUrl"
+          type="text"
+          formControlName="imageUrl"
+          placeholder="Add a imageUrl"
+          class="w-full bg-gray-200 text-gray-700 rounded-xl py-3 px-4 placeholder:text-gray-500 focus:outline-none"
+        />
+       <div
+  *ngIf="f['imageUrl'].touched && f['imageUrl'].invalid"
+  class="text-red-500 text-xs mt-1"
+>
+  <div *ngIf="f['imageUrl'].errors?.['required']">Image URL is required.</div>
+  <div *ngIf="f['imageUrl'].errors?.['pattern']">
+    Please enter a valid image URL (png, jpg, jpeg, gif, svg).
+  </div>
+</div>
+
+      </div>
+
+
+      <!-- Created By -->
+<div>
+  <label for="createdBy" class="block text-xs text-gray-700 mb-1">
+    Created By
+  </label>
+  <select
+    id="createdBy"
+    formControlName="createdBy"
+    class="w-full bg-gray-200 text-gray-700 rounded-xl py-3 px-4 focus:outline-none appearance-none"
+  >
+    <option value="" disabled selected>Select a creator</option>
+    <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
+  </select>
+  <div
+    *ngIf="f['createdBy'].touched && f['createdBy'].invalid"
+    class="text-red-500 text-xs mt-1"
+  >
+    <div *ngIf="f['createdBy'].errors?.['required']">
+      Please select a creator.
+    </div>
+  </div>
+</div>
+
+<!-- Board -->
+<div>
+  <label for="board" class="block text-xs text-gray-700 mb-1">
+    Board
+  </label>
+  <select
+    id="board"
+    formControlName="board"
+    class="w-full bg-gray-200 text-gray-700 rounded-xl py-3 px-4 focus:outline-none appearance-none"
+  >
+    <option value="" disabled selected>Select a board</option>
+    <option *ngFor="let board of boards" [value]="board._id">{{ board.name }}</option>
+  </select>
+  <div
+    *ngIf="f['board'].touched && f['board'].invalid"
+    class="text-red-500 text-xs mt-1"
+  >
+    <div *ngIf="f['board'].errors?.['required']">Please select a board.</div>
+  </div>
+</div>
+
+
+
+      <div>
+        <label for="tags" class="block text-xs text-gray-400 mb-1"
+          >Featured topics with tag (0)</label
+        >
+        <input
+          id="tags"
+          type="text"
+          formControlName="tags"
+          placeholder="Search for a tag"
+          class="w-full bg-gray-200 text-gray-700 rounded-xl py-3 px-4 placeholder:text-gray-500 focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <label for="repinFrom" class="block text-xs text-gray-700 mb-1"
+          >Repin From (Pin ID, optional)</label
+        >
+        <input
+          id="repinFrom"
+          type="text"
+          formControlName="repinFrom"
+          placeholder="Original Pin ObjectId"
+          class="w-full bg-gray-200 text-gray-700 rounded-xl py-3 px-4 placeholder:text-gray-500 focus:outline-none"
+        />
+      </div>
+
+      <!-- [disabled]="pinForm.invalid" -->
+      <button
+  type="submit"
+  class="bg-gray-200 rounded-xl py-3 font-bold text-black hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+>
+  Submit
+</button>
+
+    </div>
+  </form>
+</div>
