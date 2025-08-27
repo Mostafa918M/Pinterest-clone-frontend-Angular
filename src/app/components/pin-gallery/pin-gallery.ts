@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Pin } from '../../interfaces/pin';
 import { CommonModule } from '@angular/common';
 import { PinService } from '../../services/pin-service';
+import { Sidebar } from '../sidebar/sidebar';
+import { Header } from '../header/header';
 
 @Component({
   selector: 'app-pin-gallery',
-  imports: [CommonModule],
+  imports: [CommonModule, Header, Sidebar],
   templateUrl: './pin-gallery.html',
   styleUrl: './pin-gallery.css',
 })

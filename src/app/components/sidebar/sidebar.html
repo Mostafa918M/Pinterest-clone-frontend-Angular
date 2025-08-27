@@ -1,0 +1,51 @@
+<div
+      class="hidden md:flex flex-col items-center space-y-6 px-3 py-6 border-l border-gray-200 bg-white sticky top-0 h-screen"
+    >
+      <button
+        aria-label="Pinterest"
+        class="text-red-600 hover:text-red-700 text-2xl"
+      >
+        <i class="fab fa-pinterest-p"> </i>
+      </button>
+      <button
+        aria-label="Instagram"
+        class="text-black hover:text-gray-700 text-2xl"
+      >
+        <i class="fab fa-instagram"> </i>
+      </button>
+      <button aria-label="Apps" class="text-black hover:text-gray-700 text-2xl">
+        <i class="fas fa-th-large"> </i>
+      </button>
+      <button
+        aria-label="Add"
+        class="text-black hover:text-gray-700 text-2xl"
+        (click)="goToCreatePin()"
+      >
+        <i class="fas fa-plus"></i>
+      </button>
+
+
+      <button
+        aria-label="Notifications"
+        class="relative text-black hover:text-gray-700 text-2xl"
+      >
+        <i class="fas fa-bell"> </i>
+        <span
+          class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-semibold rounded-full px-1.5"
+        >
+          1
+        </span>
+      </button>
+      <button
+        aria-label="Messages"
+        class="text-black hover:text-gray-700 text-2xl"
+      >
+        <i class="fas fa-comment-alt"> </i>
+      </button>
+      <button
+        aria-label="Settings"
+        class="text-black hover:text-gray-700 text-2xl mt-auto"
+      >
+        <i class="fas fa-cog"> </i>
+      </button>
+    </div>

@@ -10,21 +10,32 @@ import { Profile } from './core/pages/profile/profile';
 import { authGuard } from './auth/auth-guard';
 import { Landing } from './core/pages/landing/landing';
 import { noAuthGuard } from './auth/no-auth-guard';
+import { CreatePin } from './core/pages/create-pin/create-pin';
 
 export const routes: Routes = [
-    {path: 'auth',component:FormBox,children:[
-        { path: 'sign-in', component: SignIn , canActivate:[noAuthGuard]},
-        { path: 'sign-up', component: SignUp , canActivate:[noAuthGuard]},
-        { path: 'forgot-password', component: ForgotPassword , canActivate:[noAuthGuard]},
-        { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
-        { path: 'verify-email', component: VerifyEmail },
-        { path: 'resend-verification', component: ResendVerification },
-    ]},
+  {
+    path: 'auth',
+    component: FormBox,
+    children: [
+      { path: 'sign-in', component: SignIn, canActivate: [noAuthGuard] },
+      { path: 'sign-up', component: SignUp, canActivate: [noAuthGuard] },
+      {
+        path: 'forgot-password',
+        component: ForgotPassword,
+        canActivate: [noAuthGuard],
+      },
+      { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+      { path: 'verify-email', component: VerifyEmail },
+      { path: 'resend-verification', component: ResendVerification },
+    ],
+  },
 
-    {path:'home',component:Home, canActivate:[authGuard]},
-    {path:'profile',component:Profile , canActivate:[authGuard]},
-    {path:'',component:Landing,canActivate:[noAuthGuard]},
-    {path:'',redirectTo:'landing',pathMatch:'full'},
+  { path: 'home', component: Home, canActivate: [authGuard] },
+  { path: 'profile', component: Profile, canActivate: [authGuard] },
+  { path: '', component: Landing, canActivate: [noAuthGuard] },
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },
 
-    {path: '**', redirectTo: '' }
+  { path: 'create-pin', component: CreatePin },
+
+  { path: '**', redirectTo: '' },
 ];
