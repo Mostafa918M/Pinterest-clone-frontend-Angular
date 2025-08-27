@@ -11,6 +11,7 @@ import { authGuard } from './auth/auth-guard';
 import { Landing } from './core/pages/landing/landing';
 import { noAuthGuard } from './auth/no-auth-guard';
 import { CreatePin } from './core/pages/create-pin/create-pin';
+import { UpdatePin } from './core/pages/update-pin/update-pin';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
 
   { path: 'create-pin', component: CreatePin },
+  { path: 'home/update-pin/:id', component: UpdatePin },
 
   { path: '**', redirectTo: '' },
 ];
