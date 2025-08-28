@@ -18,13 +18,11 @@ export class Home {
   onSignOut() {
     this.auth.signOut().subscribe({
       next: () => {
-        this.auth.clearSession();
         this.router.navigate(['']);
       },
       error: (err) => {
         console.error('Error signing out', err);
 
-        this.auth.clearSession();
         this.router.navigate(['']);
       },
     });

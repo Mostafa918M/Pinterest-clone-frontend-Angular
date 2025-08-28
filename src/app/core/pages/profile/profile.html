@@ -1,17 +1,10 @@
 <!-- profile.html -->
-<div class="profile-wrap">
-  <ul>
-    <li [routerLink]="['home']" class="cursor-pointer">home</li>
-    <li (click)="onSignOut()" class="cursor-pointer">log out</li>
-
-</ul>
   <h1>Your Profile</h1>
 
   @if (loading) {
     <div class="notice muted">Loading…</div>
   } @else {
     @if (errorMsg) { <div class="notice error">{{ errorMsg }}</div> }
-    @if (successMsg) { <div class="notice success">{{ successMsg }}</div> }
 
     @if (u) {
       <div class="card">
@@ -42,4 +35,4 @@
       </div>
     }
   }
-</div>
+
