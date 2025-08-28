@@ -112,7 +112,7 @@ export class SignUp {
           if (token) {
             sessionStorage.setItem('accessToken', token);
           }
-          this.router.navigate(['profile']);
+          this.router.navigate(['home']);
         },
         error: (err) => {
           this.loading = false;

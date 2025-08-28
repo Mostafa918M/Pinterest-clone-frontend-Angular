@@ -12,6 +12,7 @@ import { Landing } from './core/pages/landing/landing';
 import { noAuthGuard } from './auth/no-auth-guard';
 import { CreatePin } from './core/pages/create-pin/create-pin';
 import { UpdatePin } from './core/pages/update-pin/update-pin';
+import { ResetPassword } from './auth/reset-password/reset-password';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,7 @@ export const routes: Routes = [
       },
       { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
       { path: 'verify-email', component: VerifyEmail },
+      { path: 'reset-password', component: ResetPassword, canActivate: [noAuthGuard] },
       { path: 'resend-verification', component: ResendVerification },
     ],
   },
