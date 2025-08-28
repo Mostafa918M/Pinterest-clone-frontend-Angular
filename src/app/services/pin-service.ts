@@ -16,12 +16,7 @@ export class PinService {
   }
 
   createPin(pinData: any): Observable<Pin> {
-    const token = sessionStorage.getItem('accessToken');
-    console.log('token', token);
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-    return this.http.post<Pin>(this.apiUrl, pinData, { headers });
+    return this.http.post<Pin>(this.apiUrl, pinData, { withCredentials: true });
   }
 
   getPinById(id: string): Observable<Pin> {
@@ -31,12 +26,7 @@ export class PinService {
   }
 
   updatePin(id: string, pinData: any): Observable<Pin> {
-    const token = sessionStorage.getItem('accessToken');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.put<Pin>(`${this.apiUrl}/${id}`, pinData, { headers });
+  return this.http.put<Pin>(`${this.apiUrl}/${id}`, pinData, { withCredentials: true });
   }
   getPinSearch(
     params: { search?: string; page?: number; limit?: number } = {}

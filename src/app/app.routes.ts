@@ -36,8 +36,8 @@ export const routes: Routes = [
   { path: '', component: Landing, canActivate: [noAuthGuard] },
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
 
-  { path: 'create-pin', component: CreatePin },
-  { path: 'home/update-pin/:id', component: UpdatePin },
+  { path: 'create-pin', component: CreatePin, canActivate: [authGuard] },
+  { path: 'home/update-pin/:id', component: UpdatePin, canActivate: [authGuard] },
 
   { path: '**', redirectTo: '' },
 ];
