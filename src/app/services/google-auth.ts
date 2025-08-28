@@ -37,7 +37,7 @@ export class GoogleAuth {
       client_id: clientId,
       callback: cb,
       ux_mode: 'popup',
-      use_fedcm_for_prompt:  true, // <— recommended going forward
+      use_fedcm_for_prompt:  true, 
       auto_select: false,
       itp_support: true,
       login_hint: loginHint || undefined,

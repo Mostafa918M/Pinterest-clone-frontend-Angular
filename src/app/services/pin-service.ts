@@ -20,9 +20,7 @@ export class PinService {
   }
 
   getPinById(id: string): Observable<Pin> {
-    return this.http
-      .get<any>(`${this.apiUrl}/${id}`)
-      .pipe(map((response) => response.data.pin));
+    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(map((response) => response.data.pin));
   }
 
   updatePin(id: string, pinData: any): Observable<Pin> {

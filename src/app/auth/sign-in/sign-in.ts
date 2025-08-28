@@ -97,7 +97,7 @@ export class SignIn {
     this.successMsg = '';
     try {
       const clientId =
-        '486597157935-stn6eoocgi60pv8khvquftooeom6ufsr.apps.googleusercontent.com'; 
+        '486597157935-stn6eoocgi60pv8khvquftooeom6ufsr.apps.googleusercontent.com';
       const hint = (this.SignInForm.value.email || '') as string;
       const idToken = await this.google.getIdToken(clientId, hint);
 
